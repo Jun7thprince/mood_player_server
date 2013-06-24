@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @song.name %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%= @song.artist %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @song.url %>
+</p>
+
+<p>
+  <b>Categories:</b>
+  <%= @song.categories %>
+</p>
+
+<p>
+  <b>Album:</b>
+  <%= @song.album %>
+</p>
+
+<p>
+  <b>Album image:</b>
+  <%= @song.album_image %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%= @song.length %>
+</p>
+
+<p>
+  <b>Isactive:</b>
+  <%= @song.isActive %>
+</p>
+
+
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>
