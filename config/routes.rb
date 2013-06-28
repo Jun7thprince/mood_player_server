@@ -3,6 +3,7 @@ ProjectX::Application.routes.draw do
     collection do
       post 'info' => 'songs#get_info'
       get 'category/:id' => 'songs#from_category'
+      post 'update_zing_url' => 'songs#update_zing_url'
     end
   end
 

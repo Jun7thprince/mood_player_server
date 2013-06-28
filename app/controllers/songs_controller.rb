@@ -96,6 +96,12 @@ class SongsController < ApplicationController
     render json: @songs.to_json(:only => [:album, :album_image, :name, :artist, :id, :url])
   end
 
+  def update_zing_url
+    Song.update_zing_url
+
+    render json: "ok"
+  end
+
   def get_info
     @zing_uri = URI::parse(params[:url])
     zing_page = Nokogiri::HTML(Net::HTTP.get(@zing_uri))

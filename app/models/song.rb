@@ -12,6 +12,13 @@ class Song < ActiveRecord::Base
     "No idea" => 6,
   }
 
+  def self.update_zing_url
+    Song.all.each do |s|
+      s.url = Song.get_zing_direct_link_url(s.source_url)
+      s.save
+    end
+  end
+
   def update_info
     zing_title, zing_artist, zing_album = Song.fetch_info_from_zing(self.source_url)
 
