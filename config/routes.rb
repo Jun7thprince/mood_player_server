@@ -1,6 +1,10 @@
 ProjectX::Application.routes.draw do
-  resources :songs
-
+  resources :songs do
+    collection do
+      post 'info' => 'songs#get_info'
+      get 'category/:id' => 'songs#from_category'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

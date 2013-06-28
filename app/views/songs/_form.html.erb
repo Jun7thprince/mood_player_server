@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :categories %><br />
-    <%= f.text_field :categories %>
+    <%= f.select :categories, Song::CATEGORIES, {}, { :multiple => true, :size => 6 } %>
   </div>
   <div class="field">
     <%= f.label :album %><br />

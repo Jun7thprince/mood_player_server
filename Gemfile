@@ -21,6 +21,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'pry', :group => :development
+gem 'nokogiri'
+gem 'guard', :group => :development
+gem 'guard-rails', :group => :development
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

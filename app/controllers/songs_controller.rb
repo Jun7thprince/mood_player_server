@@ -1,4 +1,9 @@
+require 'uri'
+require 'net/http'
+require 'pry'
+
 class SongsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :get_info
   # GET /songs
   # GET /songs.json
   def index
@@ -35,6 +40,7 @@ class SongsController < ApplicationController
   # GET /songs/1/edit
   def edit
     @song = Song.find(params[:id])
+    @song.categories = @song.categories.split(',')
   end
 
   # POST /songs
@@ -42,6 +48,7 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(params[:song])
 
+    params[:song][:categories] = params[:song][:categories].reject { |c| c.blank? }.join(',')
     respond_to do |format|
       if @song.save
         format.html { redirect_to @song, notice: 'Song was successfully created.' }
@@ -58,6 +65,7 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
 
+    params[:song][:categories] = params[:song][:categories].reject { |c| c.blank? }.join(',')
     respond_to do |format|
       if @song.update_attributes(params[:song])
         format.html { redirect_to @song, notice: 'Song was successfully updated.' }
@@ -79,5 +87,25 @@ class SongsController < ApplicationController
       format.html { redirect_to songs_url }
       format.json { head :no_content }
     end
+  end
+
+  def from_category
+    cat_id = params[:id].to_i
+    @songs = Song.where("categories LIKE ?", "%#{cat_id}%").order("random()")
+
+    render json: @songs.to_json(:only => [:album, :album_image, :name, :artist, :id, :url])
+  end
+
+  def get_info
+    @zing_uri = URI::parse(params[:url])
+    zing_page = Nokogiri::HTML(Net::HTTP.get(@zing_uri))
+    title = zing_page.css('.detail-content-title h1').first
+    title &&= title.content
+    author = zing_page.css('.detail-content-title h2 a').first
+    author &&= author.content
+    album = zing_page.css('.song-info a[href*=album]').first
+    album &&= album.content
+
+    render json: { title: title, author: author, album: album }
   end
 end
