@@ -25,6 +25,7 @@ gem 'pry', :group => :development
 gem 'nokogiri'
 gem 'guard', :group => :development
 gem 'guard-rails', :group => :development
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
