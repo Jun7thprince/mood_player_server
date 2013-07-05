@@ -14,8 +14,12 @@ class Song < ActiveRecord::Base
 
   def self.update_zing_url
     Song.all.each do |s|
-      s.url = Song.get_zing_direct_link_url(s.source_url)
-      s.save
+      begin
+        s.url = Song.get_zing_direct_link_url(s.source_url)
+        s.save
+      rescue => e
+        puts s.name
+      end
     end
   end
 
