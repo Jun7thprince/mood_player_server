@@ -91,6 +91,9 @@ class SongsController < ApplicationController
 
   def from_category
     cat_id = params[:id].to_i
+    if cat_id == 6
+      cat_id = ""
+    end
     @songs = Song.where("categories LIKE ?", "%#{cat_id}%").order("random()")
 
     render json: @songs.to_json(:only => [:album, :album_image, :name, :artist, :id, :url])
