@@ -76,6 +76,7 @@ GEM
     multi_json (1.7.7)
     nokogiri (1.5.9)
     nokogiri (1.5.9-x86-mingw32)
+    pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -158,6 +159,7 @@ DEPENDENCIES
   guard-rails
   jquery-rails
   nokogiri
+  pg
   pry
   rails (= 3.2.13)
   rb-readline
