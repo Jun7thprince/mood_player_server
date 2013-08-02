@@ -19,7 +19,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: pg
+  adapter: postgresql
   database: mood_player
   username: unreal
   pool: 5

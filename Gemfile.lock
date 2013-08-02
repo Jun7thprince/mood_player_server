@@ -40,6 +40,10 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     daemons (1.1.9)
+    daemons-rails (1.1.2)
+      daemons
+      multi_json (~> 1.0)
+      rails (~> 3.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
@@ -77,6 +81,7 @@ GEM
     nokogiri (1.5.9)
     nokogiri (1.5.9-x86-mingw32)
     pg (0.15.1)
+    pg (0.15.1-x86-mingw32)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -155,6 +160,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  daemons-rails
   guard
   guard-rails
   jquery-rails
